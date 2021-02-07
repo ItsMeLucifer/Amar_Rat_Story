@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 61
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe70aba2e7074048aca5de573b64a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SimpleSelectedItems:
+    m_Keys:
+    - 
+    m_Values: 01
+  RevisionSummary: 'dodalem powiadomienie o aktualnych statach do UI w Knoxville
+    (zostalo zrobic aby pojawialo sie gdy nasze statystyki beda ponizej ustalonej
+    granicy gdy podejdziemy do banku), przepisalem kodi teraz wszystkie statystyki
+    (te wywietlane w UI i te brane pod uwage w Szczurzy_dom) sa brane z GameManagera,
+    wiec wszystlo jest w jednym miejscu. Zostalo do zrobienia: - Postawic szczura(tylko
+    grafike) w Boss Level , a nad nim pasek zycia, ktory bedzie spadal o stala wartosc
+    co iles sekund. - Zrobic aby timer nie wychodzil poza inne sceny, no i aby dzialal
+    poprawnie (jak dojdzie do zera to ma wypierdalac cie do Szczurzy_dom i zapierdalac
+    polowe jedzenia ktore zebrales). - Otstania rzecz to wyjebac DontDestronOnLoad
+    ze szczura, kamery i UI i zrobic aby w kazdym elevelu byly zdublowane te rzeczy
+    i po prostu braly informacje z gamemanagera'
+  ChangesSearchValue: 
+  SelectedHistoryRevision: 
+  HistoryPageNumber: 0
+  TabIndex: 1
