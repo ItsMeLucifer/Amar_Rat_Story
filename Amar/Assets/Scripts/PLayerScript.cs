@@ -22,7 +22,7 @@ public class PLayerScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
         if(col.name == "kanaly"){
-            SceneManager.LoadScene("kanaly");
+            GameManager.Instance.LoadSewers();
         }
         if (col.name == "bank")
         {
@@ -34,7 +34,9 @@ public class PLayerScript : MonoBehaviour
             GameObject.Find("wall2").GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f);
         }
         if(col.name == "tpKanaly2"){
-            SceneManager.LoadScene("Szczurzy_Dom");
+            
+            GameManager.Instance.LoadSzczurzyDom();
+            
         }
         if(col.tag == "bullet")
         {

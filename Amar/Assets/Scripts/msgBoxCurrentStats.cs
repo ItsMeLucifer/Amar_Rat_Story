@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class msgBoxCurrentStats : MonoBehaviour
 {
@@ -23,5 +24,11 @@ public class msgBoxCurrentStats : MonoBehaviour
         healthText.text = "Recommended Health: 200 (Current: "+health.ToString()+")";
         speedText.text = "Recommended Speed: 40 (Current: "+speed.ToString()+")";
         strengthText.text = "Recommended Strength: 40 (Current: "+strength.ToString()+")";
+    }
+    public void ChangeScene(){
+        SceneManager.LoadScene("Bank");
+    }
+    public void TurnOffMsgBox(){
+        gameObject.SetActive(false);
     }
 }

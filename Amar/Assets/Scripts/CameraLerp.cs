@@ -16,9 +16,6 @@ public class CameraLerp : MonoBehaviour
     {
         defZ = transform.position.z;
     }
-    void Awake(){
-        DontDestroyOnLoad(gameObject);
-    }
     // Update is called once per frame
     void FixedUpdate()
     {

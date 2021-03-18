@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private const int TIME_LIMIT = 120; //seconds
+    [SerializeField] private int TIME_LIMIT = 120; //seconds
     // Start is called before the first frame update
     [SerializeField] private GameObject amar;
 
@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if(stats[_STATS.health] <= 0)
+            LoadEndScene();
     }
 
     // Update is called once per frame
@@ -122,12 +124,24 @@ public class GameManager : MonoBehaviour
         timerEndUI.SetActive(true);
         yield return new WaitForSeconds(5);
         timerEndUI.SetActive(false);
-        LoadSewers();
-        // tu ładowane kanały majo być (po zapisaniu statsów na szczura)
+        SetFood(GetFood()/2);
+        LoadSzczurzyDom();
     }
+    private Scene lastScene;
 
-    void LoadSewers()
+    public void LoadSzczurzyDom()
     {
+        StopCoroutine(levelCountdown(0));
+
+        SaveLastScene();
+        SceneManager.LoadScene("Szczurzy_Dom");
+        
+    }
+    
+
+    public void LoadSewers()
+    {
+        StopCoroutine(levelCountdown(0));
         SaveLastScene();
         SetSzczurMovement(true);
         SceneManager.LoadScene("Kanaly");
@@ -135,13 +149,17 @@ public class GameManager : MonoBehaviour
 
     public void LoadBossFight()
     {
-        SetSzczurMovement(false);
+        StopCoroutine(levelCountdown(0));
+
+        // SetSzczurMovement(false);
         SceneManager.LoadScene("BossFight");
     }
-    private Scene lastScene;
 
     public void LoadKnoxville()
     {
+        StopCoroutine(levelCountdown(0));
+        timerUI_text = timerUI.GetComponent<Text>();
+        IfExploring();
         SaveLastScene();
         SceneManager.LoadScene("Knoxville");
         stats[_STATS.food] = 0;
@@ -170,8 +188,9 @@ public class GameManager : MonoBehaviour
     }
     private void TimerEnd()
     {
-        Debug.Log("Koniec czasu, wypierdalasz.");
+        Debug.Log("Koniec czasu");
         SetSzczurMovement(false);
+        StopCoroutine(levelCountdown(0));
         StartCoroutine(TimerEndMessage());
         
 
@@ -186,6 +205,12 @@ public class GameManager : MonoBehaviour
     }
     public void AddFood(int food){
         stats[_STATS.food] += food;
+    }
+
+    public void SetFood(int food)
+    {
+        stats[_STATS.food] = food;
+
     }
     public void AddSkillPoints(int skillPoints){
         stats[_STATS.freeSkillPoints] += skillPoints;
@@ -216,5 +241,11 @@ public class GameManager : MonoBehaviour
     }
     public int GetFoodNeeded(){
         return stats[_STATS.foodNeeded];
+    }
+    public void Quit(){
+        Application.Quit();
+    }
+    public void LoadEndScene(){
+        SceneManager.LoadScene("GameOver");
     }
 }

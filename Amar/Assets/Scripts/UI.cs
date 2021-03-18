@@ -20,9 +20,6 @@ public class UI : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
     }
-    void Awake(){
-        DontDestroyOnLoad(gameObject);
-    }
     void Update()
     {
         Power = gameManager.GetComponent<GameManager>().GetStrength();

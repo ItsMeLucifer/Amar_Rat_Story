@@ -7,6 +7,7 @@ public class SzczurDrain : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject hpBar, hpText;
+    [SerializeField] private int DamagePerTick = 5;
     private float health, startingHealth;
 
     void Start()
@@ -35,7 +36,7 @@ public class SzczurDrain : MonoBehaviour
         {
             
             yield return new WaitForSeconds(1);
-            health -= 5;
+            health -= DamagePerTick;
         }
 
         health = 0;
@@ -44,6 +45,6 @@ public class SzczurDrain : MonoBehaviour
 
     void GameOver()
     {
-        // hehe
+       GameManager.Instance.LoadEndScene();
     }
 }

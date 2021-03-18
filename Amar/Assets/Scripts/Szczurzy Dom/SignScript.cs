@@ -7,6 +7,6 @@ public class SignScript : MonoBehaviour
 {
     void OnMouseDown()
     {
-        SceneManager.LoadScene("Knoxville");
+        GameManager.Instance.LoadKnoxville();
     }
 }

@@ -7,11 +7,9 @@ public class WalkingScript : MonoBehaviour
     private readonly float decaySpeed = 1.15f;
     private int facing = -1;
     private Rigidbody2D rb;
-
+    [SerializeField]
+    private Animator animator;
     private float x, y;
-    void Awake(){
-        DontDestroyOnLoad(gameObject);
-    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -42,9 +40,13 @@ public class WalkingScript : MonoBehaviour
         if ((y == 0 || y*clampedY<0) && clampedY != 0) clampedY /= decaySpeed;
 
         rb.velocity = new Vector3(clampedX, clampedY);
-
+        if(x == 0 && y == 0)
+            animator.SetBool("run",false);
+        else
+            animator.SetBool("run",true);
         if (x > 0)
             facing = 1;
+            
         else if (x < 0)
             facing = -1;
 
